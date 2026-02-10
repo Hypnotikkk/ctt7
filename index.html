@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carte</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main id="stage" aria-live="polite">
+      <p id="hint">votre carte est ici</p>
+      <img
+        id="card"
+        src="BC1.png"
+        alt="Carte"
+        draggable="false"
+        aria-hidden="true"
+      />
+    </main>
+    <div id="select-overlay" aria-hidden="true">
+      <button
+        type="button"
+        data-card="BC1.png"
+        data-card-witdh="35%"
+        data-card-height="35%"
+        aria-label="Carte jaune"
+      ></button>
+      <button
+        type="button"
+        data-card="RC1.png"
+        data-card-witdh="35%"
+        data-card-height="35%"
+        aria-label="Carte rouge"
+      ></button>
+      <button
+        type="button"
+        data-card="CARDTBT1.png"
+        data-card-witdh="50%"
+        data-card-height="50%"
+        aria-label="Carte verte"
+      ></button>
+      <button
+        type="button"
+        data-card="CARDTBT1.png"
+        data-card-witdh="50%"
+        data-card-height="50%"
+        aria-label="Carte bleue"
+      ></button>
+    </div>
+    <div id="rotate-overlay" aria-hidden="true">
+      <p>Veuillez garder votre téléphone en mode portrait.</p>
+    </div>
+  </body>
+</html>

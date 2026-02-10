@@ -1,0 +1,122 @@
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  overflow: hidden;
+}
+
+#stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+#hint {
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  text-align: center;
+  margin: 0;
+  padding: 0 1.5rem;
+  transition: opacity 0.2s ease;
+}
+
+#hint.is-hidden {
+  opacity: 0;
+}
+
+#card {
+  position: absolute;
+  width: auto;
+  height: auto;
+  display: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  object-fit: contain;
+  transform-origin: center;
+}
+
+#card.is-visible {
+  display: block;
+}
+
+#select-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  z-index: 5;
+}
+
+#select-overlay button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+#select-overlay.is-hidden {
+  display: none;
+}
+
+#select-overlay button:focus,
+#select-overlay button:focus-visible,
+#select-overlay button:active {
+  outline: none;
+}
+
+#rotate-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  color: var(--text);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 10;
+}
+
+#rotate-overlay p {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+body.is-landscape #rotate-overlay {
+  display: flex;
+}
+
+body.is-landscape #stage {
+  visibility: hidden;
+}
+
+body.is-landscape #select-overlay {
+  display: none;
+}
