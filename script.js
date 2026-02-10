@@ -1,4 +1,3 @@
-"use strict";
 const hint = document.getElementById("hint");
 const card = document.getElementById("card");
 const stage = document.getElementById("stage");
@@ -29,9 +28,15 @@ let lastAccel = { x: null, y: null, z: null };
 const REDIRECT_URL = "https://www.thebelgiantouch.com";
 const REDIRECT_KEY = "tbt_redirected";
 
-if (sessionStorage.getItem(REDIRECT_KEY) === "1") {
-  window.location.replace(REDIRECT_URL);
+function guardRedirect() {
+  if (sessionStorage.getItem(REDIRECT_KEY) === "1") {
+    window.location.replace(REDIRECT_URL);
+  }
 }
+
+guardRedirect();
+window.addEventListener("pageshow", guardRedirect);
+window.addEventListener("popstate", guardRedirect);
 const EXIT_THRESHOLD = 48;
 const GRAVITY_SCALE = 2400;
 const MAX_TILT = 45;
