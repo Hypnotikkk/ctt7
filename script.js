@@ -1,3 +1,4 @@
+"use strict";
 const hint = document.getElementById("hint");
 const card = document.getElementById("card");
 const stage = document.getElementById("stage");
@@ -26,6 +27,11 @@ let lastShakeTime = 0;
 let lastAccel = { x: null, y: null, z: null };
 
 const REDIRECT_URL = "https://www.thebelgiantouch.com";
+const REDIRECT_KEY = "tbt_redirected";
+
+if (sessionStorage.getItem(REDIRECT_KEY) === "1") {
+  window.location.replace(REDIRECT_URL);
+}
 const EXIT_THRESHOLD = 48;
 const GRAVITY_SCALE = 2400;
 const MAX_TILT = 45;
@@ -74,8 +80,9 @@ function revealCard() {
 function scheduleRedirect() {
   if (redirectTimer) return;
   redirectTimer = window.setTimeout(() => {
-    window.location.href = REDIRECT_URL;
-  }, 3000);
+    sessionStorage.setItem(REDIRECT_KEY, "1");
+    window.location.replace(REDIRECT_URL);
+  }, 2000);
 }
 
 function hideCard(shouldRedirect = false) {
